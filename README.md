@@ -18,10 +18,10 @@ pip pip install mysqlclient
 ```
 
 3. Make sure that MySQL is running in port 3306:
-![Step 3 image](ATBC02P01\resources\img-step3.png)
+![Step 3 image](\ATBC02P01\resources\img-step3.png)
    
 4. Create a database named: atbc02_project
-![Step 4 image](ATBC02P01\resources\img-step4.png)
+![Step 4 image](\ATBC02P01\resources\img-step4.png)
    
 5. Run migrations to create de tables in the DataBase
 ```sh
