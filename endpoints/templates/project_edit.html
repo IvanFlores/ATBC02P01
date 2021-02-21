@@ -1,0 +1,10 @@
+{% extends "template.html" %}
+{% block page_content %}
+    <h2>New Project</h2>
+    <div class="jumbotron">
+        <form method="POST" class="post-form">{% csrf_token %}
+            {{ form }}
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+{% endblock %}
