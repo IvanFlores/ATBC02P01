@@ -12,16 +12,24 @@
 #
 
 import subprocess
-from endpoints.core.command import Command
 
-# this class ads  builds the python command
+# this class ads the binary path, the project path and the name of the project
 
 
-class PythonCommand(Command):
+class Command:
 
     def __init__(self, path_binary, path_projects, name_project):
-        super().__init__(path_binary, path_projects, name_project)
+        self.path_binary = path_binary
+        self.path_projects = path_projects
+        self.name_project = name_project
 
-    # this function builds the command to run the python project main class
+    # this function is set to build commands on subclasses
     def builder(self):
-        return r'{}\main.py'.format(self.path_binary + ' ' + self.path_projects + self.name_project)
+        pass
+
+    # this function can run any command
+    def executer(self, command):
+        p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        for line in p.stdout.readlines():
+            print(line.decode('ascii')),
+        p.wait()
