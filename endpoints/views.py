@@ -9,16 +9,16 @@ from endpoints.models import Project
 from endpoints.forms import ProjectForm
 
 
-def index(request):
-    return render(request, 'menu.html', {})
-
-
 def hello(request):
     return HttpResponse("Hello, you.")
 
 
 def hello_name(request, name):
     return HttpResponse("Hello: " + name)
+
+
+def index(request):
+    return render(request, 'menu.html', {})
 
 
 def project_index(request):
