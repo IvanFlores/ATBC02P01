@@ -1,0 +1,16 @@
+{% extends "template.html" %}
+{% block page_content %}
+<div class="col-md-8 offset-md-2">
+    <h1>Projects</h1>
+    <a class="btn btn-primary" href="/" role="button">Main Menu</a>
+    <a class="btn btn-primary" href="/endpoints" role="button">EndPoints Menu</a>
+    <a class="btn btn-primary" href="/endpoints/new" role="button">New</a>
+    <hr>
+    {% for project in projects %}
+    <h2><a href="{% url 'project_detail' project.pk%}">{{ project.lang }}</a></h2>
+    <small>
+        {{ project.code | slice:":400" }}... |&nbsp;
+    </small>
+    {% endfor %}
+</div>
+{% endblock %}
