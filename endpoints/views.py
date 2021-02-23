@@ -37,6 +37,7 @@ def project_detail(request, pk):
         form = ProjectForm(request.POST)
         if form.is_valid():
             project = Project(
+                name=form.cleaned_data["name"],
                 lang=form.cleaned_data["lang"],
                 code=form.cleaned_data["code"],
                 post=post
@@ -59,6 +60,7 @@ def project_new(request):
         form = ProjectForm(request.POST)
         if form.is_valid():
             project = Project(
+                name=form.cleaned_data["name"],
                 lang=form.cleaned_data["lang"],
                 code=form.cleaned_data["code"],
             )

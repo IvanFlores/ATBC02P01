@@ -2,6 +2,13 @@ from django import forms
 
 
 class ProjectForm(forms.Form):
+    name = forms.CharField(
+        max_length=100,
+        widget=forms.TextInput(attrs={
+            "class": "form-control",
+            "placeholder": "Project name"
+        })
+    )
     lang = forms.CharField(
         max_length=100,
         widget=forms.TextInput(attrs={
