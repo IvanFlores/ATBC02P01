@@ -1,6 +1,6 @@
 #
 # @ide_jala.py Copyright (c) 2021 Jalasoft
-# 2643Av Melchor Perez de Olguin , Colquiri Sud, Cochabamba, Bolivia.
+# 2643 Av Melchor Perez de Olguin , Colquiri Sud, Cochabamba, Bolivia.
 # Av. General Inofuentes esquina Calle 20,Edificio Union № 1376, La Paz, Bolivia
 # All rights reserved
 #
@@ -12,19 +12,19 @@
 #
 
 import subprocess
-from endpoints.core.command import Command
+#from endpoints.core.command import Command
+from command import Command
 
-# this class ads  builds the python command
+# this class ads  builds the java command
 
 
 class JavaCommand(Command):
 
-    def __init__(self, path_binary, path_projects, name_project):
-        super().__init__(path_binary, path_projects, name_project)
+    # this function builds the command to run the java project main class
+    def builder(self, java_parameters):
+        #return 'cd ' + java_parameters.get_path_projects() + ' & "' + java_parameters.get_path_binary() + '" ' + java_parameters.get_name_project() + '.main'
+        return f'cd {java_parameters.get_path_projects()} & "{java_parameters.get_path_binary()}" {java_parameters.get_name_project()}.main'
 
-    # this function builds the command to run the python project main class
-    def builder(self):
-        return 'cd ' + self.path_projects + ' & "' + self.path_binary + '" ' + self.name_project + '.main'
-
-    def compiler(self):
-        return 'cd ' + self.path_projects + ' & "' + self.path_binary + 'c" ' + self.name_project + '\\*.java'
+    # this function builds the command to compile the java project
+    def compiler(self, java_parameters):
+        return '"' + java_parameters.get_path_binary() + 'c" ' + java_parameters.get_path_projects() + '\\' + java_parameters.get_name_project() + '\\*.java'
