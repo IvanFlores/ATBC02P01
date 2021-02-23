@@ -12,13 +12,17 @@
 #
 
 
-from endpoints.core.parameters import Parameters
-
-# this class ads the parameters for java command
+# this class ads the pid and result
 
 
-class JavaParameters(Parameters):
+class Results:
 
-    # this function ads the java parameters to parameters super class
-    def __init__(self, path_binary, path_projects, name_project):
-        super().__init__(path_binary, path_projects, name_project)
+    def __init__(self, pid, result):
+        self.__pid = pid
+        self.__result = result
+
+    def get_pid(self):
+        return self.__pid
+
+    def get_result(self):
+        return self.__result
