@@ -12,7 +12,8 @@
 #
 
 
-from endpoints.core.parameters import Parameters
+#from endpoints.core.parameters import Parameters
+from parameters import Parameters
 
 # this class ads the parameters for java command
 
