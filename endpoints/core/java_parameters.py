@@ -1,6 +1,6 @@
 #
 # @ide_jala.py Copyright (c) 2021 Jalasoft
-# 2643Av Melchor Perez de Olguin , Colquiri Sud, Cochabamba, Bolivia.
+# 2643 Av Melchor Perez de Olguin , Colquiri Sud, Cochabamba, Bolivia.
 # Av. General Inofuentes esquina Calle 20,Edificio Union № 1376, La Paz, Bolivia
 # All rights reserved
 #
@@ -12,8 +12,7 @@
 #
 
 
-#from endpoints.core.parameters import Parameters
-from parameters import Parameters
+from endpoints.core.parameters import Parameters
 
 # this class ads the parameters for java command
 

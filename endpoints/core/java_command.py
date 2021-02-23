@@ -12,8 +12,7 @@
 #
 
 import subprocess
-#from endpoints.core.command import Command
-from command import Command
+from endpoints.core.command import Command
 
 # this class ads  builds the java command
 
