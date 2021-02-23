@@ -11,14 +11,14 @@
 # with Jalasoft
 #
 
-from endpoints.core.command import Command
 
-# this class ads  builds the python command
+from endpoints.core.parameters import Parameters
+
+# this class ads the parameters for python command
 
 
-class PythonCommand(Command):
+class PythonParameters(Parameters):
 
-    # this function builds the command to run the python project main class
-    def builder(self, python_parameters):
-        return r'{}\main.py'.format(python_parameters.get_path_binary() + ' ' + python_parameters.get_path_projects() +
-                                    python_parameters.get_name_project())
+    # this function ads the python parameters to parameters super class
+    def __init__(self, path_binary, path_projects, name_project):
+        super().__init__(path_binary, path_projects, name_project)

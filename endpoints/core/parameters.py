@@ -11,22 +11,22 @@
 # with Jalasoft
 #
 
-import subprocess
-from abc import abstractmethod
 
 # this class ads the binary path, the project path and the name of the project
 
 
-class Command:
+class Parameters:
 
-    # this function is set to build commands on subclasses
-    @abstractmethod
-    def builder(self, parameters):
-        pass
+    def __init__(self, path_binary, path_projects, name_project):
+        self.__path_binary = path_binary
+        self.__path_projects = path_projects
+        self.__name_project = name_project
 
-    # this function can run any command
-    def executer(self, command):
-        p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        for line in p.stdout.readlines():
-            print(line.decode('ascii')),
-        p.wait()
+    def get_path_binary(self):
+        return self.__path_binary
+
+    def get_path_projects(self):
+        return self.__path_projects
+
+    def get_name_project(self):
+        return self.__name_project
