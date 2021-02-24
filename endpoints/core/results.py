@@ -12,17 +12,18 @@
 #
 
 
-# this class ads the pid and result
-
-
+# builds the Results class
 class Results:
 
+    # defines the constructor
     def __init__(self, pid, result):
         self.__pid = pid
         self.__result = result
 
+    # returns the PID
     def get_pid(self):
         return self.__pid
 
+    # returns the console results
     def get_result(self):
         return self.__result

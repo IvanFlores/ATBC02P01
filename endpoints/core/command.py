@@ -11,24 +11,25 @@
 # with Jalasoft
 #
 
+
 import subprocess
 from abc import abstractmethod
-from results import Results
-
-# this class ads the binary path, the project path and the name of the project
+from endpoints.core.results import Results
 
 
+# builds the Command class
 class Command:
 
-    # this function is set to build commands on subclasses
+    # defines the constructor for its children
     @abstractmethod
     def builder(self, parameters):
         pass
 
-    # this function can run any command
-    def executer(self, command):
-        p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        p.wait()
+    # runs an array of commands and shows the last result
+    def executer(self, commands):
+        for command in commands:
+            p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+            p.wait()
         pid = p.pid
         res = ''
         for line in p.stdout.readlines():
