@@ -1,11 +1,10 @@
 {% extends "template.html" %}
 {% block page_content %}
-    <h2>Edit Project or sent to solve</h2>
+    <h2>New Project</h2>
     <div class="jumbotron">
         <form method="POST" class="post-form">{% csrf_token %}
             {{ form }}
             <button class="btn btn-primary" type="submit">Submit</button>
-            <a class="btn btn-primary" href="{% url 'project_solve' project.pk%}" role="button">Solve</a>
         </form>
     </div>
 {% endblock %}
