@@ -14,9 +14,9 @@
 from endpoints.core.parameters import Parameters
 
 
-# ads the java parameters
+# builds the JavaCommand class
 class JavaParameters(Parameters):
 
-    # ads the java parameters
+    # adds java parameters to parameters super class
     def __init__(self, path_binary, path_projects, name_project):
         super().__init__(path_binary, path_projects, name_project)
