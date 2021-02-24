@@ -32,7 +32,7 @@ class Command:
             p.wait()
         pid = p.pid
         res = ''
-        print("Estás en Executer command")
+        print(commands)
         for line in p.stdout.readlines():
             res = res + line.decode('ascii')
         return Results(pid, res)
