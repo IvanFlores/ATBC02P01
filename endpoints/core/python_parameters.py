@@ -1,6 +1,6 @@
 #
 # @ide_jala.py Copyright (c) 2021 Jalasoft
-# 2643Av Melchor Perez de Olguin , Colquiri Sud, Cochabamba, Bolivia.
+# 2643 Av Melchor Perez de Olguin , Colquiri Sud, Cochabamba, Bolivia.
 # Av. General Inofuentes esquina Calle 20,Edificio Union № 1376, La Paz, Bolivia
 # All rights reserved
 #
@@ -11,14 +11,12 @@
 # with Jalasoft
 #
 
-
 from endpoints.core.parameters import Parameters
 
-# this class ads the parameters for python command
 
-
+# ads the python parameters
 class PythonParameters(Parameters):
 
-    # this function ads the python parameters to parameters super class
+    # ads the python parameters
     def __init__(self, path_binary, path_projects, name_project):
         super().__init__(path_binary, path_projects, name_project)

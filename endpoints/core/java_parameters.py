@@ -11,14 +11,12 @@
 # with Jalasoft
 #
 
-
 from endpoints.core.parameters import Parameters
 
-# this class ads the parameters for java command
 
-
+# ads the java parameters
 class JavaParameters(Parameters):
 
-    # this function ads the java parameters to parameters super class
+    # ads the java parameters
     def __init__(self, path_binary, path_projects, name_project):
         super().__init__(path_binary, path_projects, name_project)
