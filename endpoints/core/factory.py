@@ -33,4 +33,6 @@ class Factory:
         built_command = command.builder(parameters)
         result = command.executer(built_command)
 
+        print("Estás en Factory")
+
         return result

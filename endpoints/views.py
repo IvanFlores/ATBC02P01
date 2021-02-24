@@ -1,5 +1,8 @@
 import logging
 
+from endpoints.core.factory import Factory
+from endpoints.core.python_parameters import PythonParameters
+
 from django.core.files import File
 from django.shortcuts import render
 from django.shortcuts import redirect, get_object_or_404, render
@@ -97,12 +100,15 @@ def project_run(request):
                 code = 'print("No code submitted!")'
     else:
         code = 'Error reading the code.'
-    logger.error(file+": "+code)
+    #logger.error(file+": "+code)
     f = open(file, 'w')
     my_file = File(f)
     my_file.write(code)
-    # Call the command function and render it.
-    return render(request, 'message.html', {'message': 'Save ' + lang + ' code complete: ' + code})
+
+    result = run_factory()
+    return render(request, 'message.html', {result.get_result()})
+
+    #return render(request, 'message.html', {'message': 'Save ' + lang + ' code complete: ' + code})
 
 
 def project_edit(request, pk):
@@ -123,3 +129,11 @@ def project_edit(request, pk):
         "form": form,
     }
     return render(request, "project_edit.html", context)
+
+
+def run_factory():
+    factory = Factory()
+    result = factory.run_project(r'C:\Users\iflores\AppData\Local\Programs\Python\Python39\python',
+                                     r'D:\ATBC02Projects\ATBC02P01\endpoints', 'projects', 'python')
+    print("Result:\n\t " + result.get_result())
+    return result
