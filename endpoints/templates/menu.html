@@ -1,14 +1,10 @@
 {% extends "template.html" %}
 {% block page_content %}
-<h1>Here are the Code Pojects options:</h1>
+<h1>Here are the Code Projects options:</h1>
 <div class="jumbotron">
     <p><a class="btn btn-primary" href='/endpoints/index'>Project list</a></p>
     <p><a class="btn btn-primary" href='/endpoints/new'>New project</a></p>
-    <p><a class="btn btn-primary" href='/'>Main Menu</a></p>
+    <p><a class="btn btn-primary" href='/endpoints/code'>Code project</a></p>
 </div>
-<h1>EndPoints created:</h1>
-<div class="jumbotron">
-    <p><a class="btn btn-primary" href='/endpoints/hello'>Hello</a></p>
-    <p><a class="btn btn-primary" href='/endpoints/hello_name/test'>Hello test</a></p>
-</div>
+<p><a class="btn btn-primary" href='/'>Main Menu</a></p>
 {% endblock %}

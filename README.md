@@ -1,5 +1,7 @@
 # ATBC02P01
 Jalasoft Automation BootCamp 01 - Project 01
+Conceptual design can be found at [this link](https://drive.google.com/file/d/1WTLRFkkO_hoHeE8KobswkalNDI9yBK5y/view?usp=sharing)
+On **Use Case Diagram** page.
 
 ## Requirements
 

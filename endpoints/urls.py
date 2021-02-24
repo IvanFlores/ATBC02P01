@@ -23,6 +23,9 @@ urlpatterns = [
     path('hello_name/<name>', views.hello_name, name='hello_name'),
     path('index', views.project_index, name="project_index"),
     path('new/', views.project_new, name='project_new'),
-    path('index/<int:pk>/', views.project_detail, name="project_detail"),
+    path('index/<int:pk>/', views.edit, name="project_edit"),
+    path('delete/<int:pk>/', views.delete, name="project_delete"),
+    path('solve/<int:pk>/', views.project_solve, name="project_solve"),
+    path('run/', views.project_run, name="project_run"),
 ]
 
