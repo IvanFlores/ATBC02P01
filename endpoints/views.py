@@ -106,7 +106,7 @@ def project_run(request):
     my_file.write(code)
 
     result = run_factory()
-    return render(request, 'message.html', {result.get_result()})
+    return render(request, 'message.html', {"message": result.get_result()})
 
     #return render(request, 'message.html', {'message': 'Save ' + lang + ' code complete: ' + code})
 
