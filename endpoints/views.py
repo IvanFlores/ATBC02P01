@@ -3,6 +3,7 @@ import os
 
 from endpoints.core.factory import Factory
 from endpoints.core.python_parameters import PythonParameters
+from endpoints.core.java_parameters import JavaParameters
 
 from django.core.files import File
 from django.shortcuts import render
@@ -138,11 +139,13 @@ def project_edit(request, pk):
 def run_factory(typ):
     factory = Factory()
     if typ == 'java':
-        result = factory.run_project(r'C:\Program Files\Java\jdk1.8.0\bin\java',
-                                     r'E:\Git\ATBC02P01\endpoints', 'projects', 'java')
+        parameters = JavaParameters(r'C:\Program Files\Java\jdk1.8.0\bin\java',
+                                     r'E:\Git\ATBC02P01\endpoints', 'projects')
     else:
-        result = factory.run_project(r'C:\Python\Python39\python',
-                                     r'endpoints', 'projects', 'python')
+        parameters = PythonParameters(r'C:\Python\Python39\python',
+                                     r'endpoints', 'projects')
+
+    result = factory.run_project(parameters, typ)
     print("Result:\n\t " + result.get_result())
     return result
 

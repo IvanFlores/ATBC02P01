@@ -12,27 +12,22 @@
 #
 
 from endpoints.core.python_command import PythonCommand
-from endpoints.core.python_parameters import PythonParameters
 from endpoints.core.java_command import JavaCommand
-from endpoints.core.java_parameters import JavaParameters
+
 
 
 # runs a project
 class Factory:
 
     # return the project result
-    def run_project(self, path_binary, path_projects, name_project, language):
+    def run_project(self, parameters, language):
 
         if language == 'python':
-            parameters = PythonParameters(path_binary, path_projects, name_project)
             command = PythonCommand()
         elif language == 'java':
-            parameters = JavaParameters(path_binary, path_projects, name_project)
             command = JavaCommand()
 
         built_command = command.builder(parameters)
         result = command.executer(built_command)
-
-        print("Estás en Factory")
 
         return result
