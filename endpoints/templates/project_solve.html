@@ -1,0 +1,35 @@
+{% extends "template.html" %}
+{% block page_content %}
+<br>
+<div class="container">
+    <div class="alert alert-dismissible alert-info">
+        <span class="badge badge-primary text-right">{{ project.lang }}</span>
+        <h4 class="alert-heading">{{ project.name }}</h4>
+        <p class="mb-0">{{ project.code_challenge }}</p>
+    </div>
+</div>
+<div class="card text-center">
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Main</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">+</a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body">
+        <form action="/endpoints/run/" method="GET">{% csrf_token %}
+            <textarea id="lang" name="lang">{{ project.lang }}</textarea>
+            <div class="form-gorup">
+                <label for="code">Your code:</label>
+                <textarea class="form-control" name="code" id="code" rows="10"></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Run</button>
+            <a href="/endpoints/index" class="btn btn-primary">Submit</a>
+            <!-- <button class="btn btn-primary" type="submit">Submit</button> -->
+        </form>
+    </div>
+</div>
+{% endblock %}
