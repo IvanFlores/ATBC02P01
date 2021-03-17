@@ -27,11 +27,14 @@ class Command:
 
     # runs an array of commands and shows the last result
     def executer(self, commands):
+        res = ''
         for command in commands:
             p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
             p.wait()
+            for line in p.stdout.readlines():
+                res = res + line.decode('ascii')
+            if res.find('rror:') != -1:
+                break
         pid = p.pid
-        res = ''
-        for line in p.stdout.readlines():
-            res = res + line.decode('ascii')
+        print(commands)
         return Results(pid, res)

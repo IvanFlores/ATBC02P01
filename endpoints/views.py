@@ -1,4 +1,9 @@
 import logging
+import os
+
+from endpoints.core.factory import Factory
+from endpoints.core.python_parameters import PythonParameters
+from endpoints.core.java_parameters import JavaParameters
 
 from django.core.files import File
 from django.shortcuts import render
@@ -77,12 +82,15 @@ def project_solve(request, pk):
 
 
 def project_run(request):
+    typ = ''
     if 'lang' in request.GET:
         lang = request.GET['lang']
         if lang.lower() == 'java':
             file = 'endpoints/projects/main.java'
+            typ = 'java'
         else:
             file = 'endpoints/projects/main.py'
+            typ = 'python'
     else:
         lang = "No lang"
         file = 'main.py'
@@ -91,18 +99,21 @@ def project_run(request):
         code = request.GET['code']
         if len(code) is 0:
             if lang.lower() == 'java':
-                code = 'public class main{public static void main(String[] args) ' \
-                       '{System.out.println("No code submitted!");}}'
+                code = 'package projects;\npublic class main{public static void main(String[] args) ' \
+                       '{\n\t\tSystem.out.println("No code submitted in Java!");\n\t}\n}'
             else:
-                code = 'print("No code submitted!")'
+                code = 'print("No code submitted in python!")'
     else:
         code = 'Error reading the code.'
-    logger.error(file+": "+code)
+    #logger.error(file+": "+code)
     f = open(file, 'w')
     my_file = File(f)
     my_file.write(code)
-    # Call the command function and render it.
-    return render(request, 'message.html', {'message': 'Save ' + lang + ' code complete: ' + code})
+    f.close()
+    result = run_factory(typ)
+    return render(request, 'message.html', {"message": result.get_result()})
+
+    #return render(request, 'message.html', {'message': 'Save ' + lang + ' code complete: ' + code})
 
 
 def project_edit(request, pk):
@@ -123,3 +134,18 @@ def project_edit(request, pk):
         "form": form,
     }
     return render(request, "project_edit.html", context)
+
+
+def run_factory(typ):
+    factory = Factory()
+    if typ == 'java':
+        parameters = JavaParameters(r'C:\Program Files\Java\jdk1.8.0\bin\java',
+                                     r'E:\Git\ATBC02P01\endpoints', 'projects')
+    else:
+        parameters = PythonParameters(r'C:\Python\Python39\python',
+                                     r'endpoints', 'projects')
+
+    result = factory.run_project(parameters, typ)
+    print("Result:\n\t " + result.get_result())
+    return result
+

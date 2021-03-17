@@ -1,6 +1,7 @@
 {% extends "template.html" %}
 {% block page_content %}
-Output: {{ message }}
+Output: <br>
+{{ message | linebreaksbr }}
 <script>
     alert('{{ message }}');
 </script>
